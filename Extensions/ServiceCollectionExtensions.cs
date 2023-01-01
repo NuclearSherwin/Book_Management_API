@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using BookManagement.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
@@ -25,8 +26,8 @@ namespace BookManagement.Extensions
         public static IServiceCollection AddService(this IServiceCollection service)
         {
             service.AddScoped<IBookService, BookService>();
-            // service.AddScoped<IUserService, UserService>();
-            // service.AddScoped<IJwtUtils, JwtUtils>();
+            service.AddScoped<IUserService, UserService>();
+            service.AddScoped<IJwtUtils, JwtUtils>();
             return service;
         }
         

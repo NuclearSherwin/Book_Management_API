@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using BookManagement.Dtos;
 using BookManagement.Models;
 using BookManagement.Services.IServices;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookManagement.Controllers
 {
+    // [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     //[Authorize]
@@ -22,7 +24,6 @@ namespace BookManagement.Controllers
         }
 
         [HttpGet]
-        // http://localhost:5000/api/books
         public IList<Book> GetAll()
         {
             return _bookService.GetAll();
@@ -73,7 +74,6 @@ namespace BookManagement.Controllers
         }
         
         [HttpGet("users/{id:int}/books/{bookId:int}")]
-        // http://localhost:5001/api/books/users/1/books
         public IActionResult Favourite([FromRoute] int id, int bookId)
         {
             return Ok();
